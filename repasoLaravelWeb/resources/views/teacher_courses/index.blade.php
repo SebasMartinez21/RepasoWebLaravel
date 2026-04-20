@@ -42,6 +42,7 @@
                     <th>Nombre del Profesor</th>
                     <th>Nombre del Curso</th>
                     <th>Tutor</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,9 @@
                     <td>{{$teacher_course->teacher->name ?? 'N/A'}}</td>
                     <td>{{$teacher_course->course->name ?? 'N/A'}}</td>
                     <td>{{$teacher_course->tutor}}</td>
+                    <td>
+                        
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

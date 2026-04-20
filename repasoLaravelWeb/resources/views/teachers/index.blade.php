@@ -34,6 +34,7 @@
                     <th>Nombre</th>
                     <th>Dirección</th>
                     <th>Ciudad</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,8 +42,11 @@
                 <tr>
                     <td>{{$teacher->id}}</td>
                     <td>{{$teacher->name}}</td>
-                    <td>{{$teacher->direc}}</td>
+                    <td>{{$teacher->address}}</td>
                     <td>{{$teacher->city}}</td>
+                    <td>
+                        
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -34,6 +34,7 @@
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Creditos</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,9 @@
                     <td>{{$course->name}}</td>
                     <td>{{$course->descr}}</td>
                     <td>{{$course->credits}}</td>
+                    <td>
+                        
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
