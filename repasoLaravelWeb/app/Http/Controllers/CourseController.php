@@ -7,28 +7,24 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
-        //
+        $courses = Course::all();
+
+        return view('courses.index', compact('courses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $course = new Course();
+        $course->name = $request->name;
+        $course->descr = $request->descr;
+        $course->credits = $request->credits;
+
+        $course->save();
+
+        return redirect()->route('courses.index');
     }
 
     /**

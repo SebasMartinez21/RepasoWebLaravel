@@ -7,28 +7,23 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $teachers = Teacher::all();
+
+        return view('teachers.index', compact('teachers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $teacher = new Teacher();
+        $teacher->name = $request->name;
+        $teacher->address = $request->address;
+        $teacher->city = $request->city;
+
+        $teacher->save();
+
+        return redirect()->route('teachers.index');
     }
 
     /**

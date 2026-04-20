@@ -4,31 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\TeacherCourses;
 use Illuminate\Http\Request;
+use App\Models\Teacher;
+use App\Models\Course;
 
 class TeacherCoursesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $teachers = Teacher::all();
+        $courses = Course::all();
+        $teacher_courses = TeacherCourses::all();
+
+        return view('teacher_courses.index', compact('teacher_courses', 'courses', 'teachers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $teacher_course = new TeacherCourses();
+        $teacher_course->id_teacher = $request->id_teacher;
+        $teacher_course->id_course = $request->id_course;
+        $teacher_course->tutor = $request->tutor;
+
+        $teacher_course->save();
+
+        return redirect()->route('teacher_courses.index');
     }
 
     /**
