@@ -26,35 +26,31 @@ class TeacherController extends Controller
         return redirect()->route('teachers.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Teacher $teacher)
+    public function edit($id)
     {
-        //
+        $teacher = Teacher::find($id);
+
+        return view('teachers.edit', compact('teacher'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Teacher $teacher)
+    public function update(Request $request, $id)
     {
-        //
+        $teacher = Teacher::find($id);
+        $teacher->name = $request->name;
+        $teacher->address = $request->address;
+        $teacher->city = $request->city;
+
+        $teacher->save();
+
+        return redirect()->route('teachers.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Teacher $teacher)
+    public function destroy($id)
     {
-        //
-    }
+        $teacher = Teacher::find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Teacher $teacher)
-    {
-        //
+        $teacher->delete();
+
+        return redirect()->route('teachers.index');
     }
 }

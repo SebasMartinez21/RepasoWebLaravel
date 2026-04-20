@@ -27,35 +27,31 @@ class CourseController extends Controller
         return redirect()->route('courses.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Course $course)
+    public function edit($id)
     {
-        //
+        $course = Course::find($id);
+
+        return view('courses.edit', compact('course'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Course $course)
+    public function update(Request $request, $id)
     {
-        //
+        $course = Course::find($id);
+        $course->name = $request->name;
+        $course->descr = $request->descr;
+        $course->credits = $request->credits;
+
+        $course->save();
+
+        return redirect()->route('courses.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Course $course)
+    public function destroy($id)
     {
-        //
-    }
+        $course = Course::find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Course $course)
-    {
-        //
+        $course->delete();
+
+        return redirect()->route('courses.index');
     }
 }

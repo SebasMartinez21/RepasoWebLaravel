@@ -45,7 +45,12 @@
                     <td>{{$course->descr}}</td>
                     <td>{{$course->credits}}</td>
                     <td>
-                        
+                        <a href="{{route('courses.edit', $course->id)}}" class="btn btn-primary">Editar</a>
+                        <form action="{{route('courses.destroy', $course->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

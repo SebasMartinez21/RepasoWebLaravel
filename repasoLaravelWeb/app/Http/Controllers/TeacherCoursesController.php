@@ -13,7 +13,7 @@ class TeacherCoursesController extends Controller
     {
         $teachers = Teacher::all();
         $courses = Course::all();
-        $teacher_courses = TeacherCourses::all();
+        $teacher_courses = TeacherCourses::with(['teacher', 'course'])->get();
 
         return view('teacher_courses.index', compact('teacher_courses', 'courses', 'teachers'));
     }
@@ -30,35 +30,33 @@ class TeacherCoursesController extends Controller
         return redirect()->route('teacher_courses.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(TeacherCourses $teacherCourses)
+    public function edit($id)
     {
-        //
+        $teachers = Teacher::all();
+        $courses = Course::all();
+        $teacher_course = TeacherCourses::find($id);
+
+        return view('teacher_courses.edit', compact('teacher_course', 'teachers', 'courses'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TeacherCourses $teacherCourses)
+    public function update(Request $request, $id)
     {
-        //
+        $teacher_course = TeacherCourses::find($id);
+        $teacher_course->id_teacher = $request->id_teacher;
+        $teacher_course->id_course = $request->id_course;
+        $teacher_course->tutor = $request->tutor;
+
+        $teacher_course->save();
+
+        return redirect()->route('teacher_courses.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, TeacherCourses $teacherCourses)
+    public function destroy($id)
     {
-        //
-    }
+        $teacher_course = TeacherCourses::find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(TeacherCourses $teacherCourses)
-    {
-        //
+        $teacher_course->delete();
+
+        return redirect()->route('teacher_courses.index');
     }
 }

@@ -45,7 +45,12 @@
                     <td>{{$teacher->address}}</td>
                     <td>{{$teacher->city}}</td>
                     <td>
-                        
+                        <a href="{{route('teachers.edit', $teacher->id)}}" class="btn btn-primary">Editar</a>
+                        <form action="{{route('teachers.destroy', $teacher->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

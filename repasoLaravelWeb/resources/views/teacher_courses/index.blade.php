@@ -11,7 +11,7 @@
     <div class="container">
         <form action="{{route('teacher_courses.store')}}" method="post">
             @csrf
-            <label for="a1">Seleccione el nombre del curso: </label>
+            <label for="a1">Seleccione el nombre del profesor: </label>
             <select name="id_teacher" id="a1">
                 @foreach ($teachers as $teacher)
                 <option value="{{$teacher->id}}">{{$teacher->name}}</option>
@@ -53,7 +53,12 @@
                     <td>{{$teacher_course->course->name ?? 'N/A'}}</td>
                     <td>{{$teacher_course->tutor}}</td>
                     <td>
-                        
+                        <a href="{{route('teacher_courses.edit', $teacher_course->id)}}" class="btn btn-primary">Editar</a>
+                        <form action="{{route('teacher_courses.destroy', $teacher_course->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
