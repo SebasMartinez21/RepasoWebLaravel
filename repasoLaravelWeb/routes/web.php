@@ -35,6 +35,10 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('pr
 
 Route::get('/categories/{id}/products', [CategoryController::class, 'relacionados'])->name('categories.relacionados');
 
+Route::get('/api', function () {
+    return view('consumoApi');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
