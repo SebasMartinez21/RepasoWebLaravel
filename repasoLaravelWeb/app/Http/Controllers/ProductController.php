@@ -22,7 +22,12 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->category_id = $request->category_id;
-        $product->is_active = $request->is_active;
+
+        if($request->is_active === "true"){
+            $product->is_active = 1;
+        }else{
+            $product->is_active = 0;
+        }
 
         $product->save();
 
@@ -43,7 +48,12 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->category_id = $request->category_id;
-        $product->is_active = $request->is_active;
+
+        if($request->is_active === "true"){
+            $product->is_active = 1;
+        }else{
+            $product->is_active = 0;
+        }
 
         $product->save();
 
