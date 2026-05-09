@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class CategoryController extends Controller
 {
@@ -61,5 +62,13 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function relacionados($id){
+        $products_rel = Product::with('category')->where('category_id', $id)->get();
+        $category = Category::find($id);
+        $category_name = $category->name;
+
+        return view('relacionados', compact('products_rel', 'category_name'));
     }
 }
