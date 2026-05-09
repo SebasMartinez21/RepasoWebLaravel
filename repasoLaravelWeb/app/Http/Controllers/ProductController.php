@@ -50,7 +50,7 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         $product = Product::find($id);
         $product->delete();
