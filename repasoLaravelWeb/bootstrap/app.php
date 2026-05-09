@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'control_acceso' => App\Http\Middleware\ControlAcceso::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
