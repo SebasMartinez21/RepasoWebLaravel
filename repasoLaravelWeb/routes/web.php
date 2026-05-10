@@ -42,6 +42,10 @@ Route::put('/teams/{id}', [TeamController::class, 'update'])->name('teams.update
 Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
 Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->name('teams.destroy');
 
+Route::get('/api_count', function () {
+    return view('productApi');
+});
+
 Route::get('/api', function () {
     return view('consumoApi');
 });
