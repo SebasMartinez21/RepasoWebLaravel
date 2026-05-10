@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 use App\Models\Competition;
 
-class Team extends Model
+class Country extends Model
 {
     use softDeletes;
 
-    public function competition(){
-        return $this->belongsTo(Competition::class, 'compe_id');
+    public function competitions(){
+        return $this->hasMany(Competition::class, 'country_id');
     }
 }
