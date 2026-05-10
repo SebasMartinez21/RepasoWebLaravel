@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TeacherCoursesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TeamController;
 
 Route::get('/teachers', [TeacherController::class, 'index'])->name('teachers.index');
 Route::get('/teachers/{id}', [TeacherController::class, 'edit'])->name('teachers.edit');
@@ -34,6 +35,12 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 Route::get('/categories/{id}/products', [CategoryController::class, 'relacionados'])->name('categories.relacionados');
+
+Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+Route::get('/teams/{id}', [TeamController::class, 'edit'])->name('teams.edit');
+Route::put('/teams/{id}', [TeamController::class, 'update'])->name('teams.update');
+Route::post('/teams', [TeamController::class, 'store'])->name('teams.store');
+Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->name('teams.destroy');
 
 Route::get('/api', function () {
     return view('consumoApi');
