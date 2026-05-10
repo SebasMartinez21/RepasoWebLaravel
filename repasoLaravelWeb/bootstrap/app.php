@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'control_acceso' => App\Http\Middleware\ControlAcceso::class,
-            'validar_registros' => App\Http\Middleware\validarRegistro::class,
+            'validar_registros' => App\Http\Middleware\validarRegistros::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
